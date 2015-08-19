@@ -1,0 +1,37 @@
+<h1>Exercise 2</h1>
+
+<h3>How to render a template</h3>
+
+<p id="content">
+
+</p>
+
+<script type="text/javascript">
+  var app = app || {};
+  app.defaultView = Backbone.View.Extend({
+    render: function(data) {
+      var tpl = _.template('The quick brown <%% animal %> jumped over the <%% adjective%> dog.');
+      var renderedTemplate = tpl(data);
+    };
+  });
+</script>
+
+
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    var template =$('#tpl').html();
+    var data ={
+      animal: 'koala',
+      adjective: 'hyperactive'
+    };
+    var tpl = _.template(template);
+
+    console.log(tpl(data));
+    $('#content').html(tpl(data));
+  });
+</script>
+
+<script type="text/template" id="tpl">
+  The quick brown <%%= animal %> jumped over the <%% adjective %> dog.
+</script>
